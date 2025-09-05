@@ -98,4 +98,9 @@ var collectableList = {
   kennedi: { image: "images/collectables/kennedi-head.png" },
   max: { image: "images/collectables/max-head.png" },
   steve: { image: "images/collectables/steve-head.png" },
+  clemson: { image: "images/collectables/Clemson_Tigers_logo.svg.png"},
+  southCarolina: { image: "images/collectables/South_Carolina_Gamecocks_logo.svg.png"},
+  alabama: { image: "images/collectables/Alabama_Athletics_logo.svg.png"},
+  secChamp: { image: "images/collectables/Southeastern_Conference_logo.svg.png"},
+  national: { image: "images/collectables/CFP_NC_logo_250_LPOMt.png"},
 };

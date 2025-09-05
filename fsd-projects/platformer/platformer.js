@@ -27,21 +27,36 @@ $(function () {
     //////////////////////////////////
 
     // TODO 1 - Enable the Grid
-    // toggleGrid();
+    toggleGrid();
 
 
     // TODO 2 - Create Platforms
-
+  createPlatform(300, 640, 200, 25, "	#F56600");
+  createPlatform(575, 540, 175, 25, "	#FFFFFF");
+  createPlatform(850, 440, 150, 25, "#000000");
+  createPlatform(1100, 340, 50, 25, "#73000A");
+  createPlatform(1150, 240, 20, 125, "#73000A");
+  createPlatform(1150, 240, 50, 25, "#73000A");
+  createPlatform(1325, 700, 75, 25, "#9E1B32");
+  createPlatform(1325, 595, 25, 130, "#9E1B32");
+  createPlatform(1100, 500, 50, 25, "#828A8F");
+  createPlatform(600, 305, 150, 25, "#005F86");
+  createPlatform(100, 200, 320, 25, "#FFD700");
 
 
 
     // TODO 3 - Create Collectables
-
-
+  createCollectable("clemson", 325, 570, 0.5);
+  createCollectable("southCarolina", 1150, 195, 0.5);
+  createCollectable("alabama", 1350, 650, 0.5);
+  createCollectable("secChamp", 750, 265, 0);
+  createCollectable("national", 200, 160, 0.5);
 
     
     // TODO 4 - Create Cannons
-
+  createCannon("top", 450, 900);
+  createCannon("left", 545, 1000);
+  createCannon("top", 750, 950);
 
     
     
