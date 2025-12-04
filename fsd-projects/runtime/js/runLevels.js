@@ -18,19 +18,21 @@ var runLevels = function (window) {
 
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
-    function createObstacle(x, y, damage){
+    function createObstacle(x, y, damage, rotation, image, imageOffsetX, imageOffsetY, imageSizeX, imageSizeY){
       var hitZoneSize = 25;// creates obstacle and gives it a size
       var damageFromObstacle = damage;// sets damage for obstacle
       var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
       obstacleHitZone.x = x;// sets x position
       obstacleHitZone.y = y;// sets y position
       game.addGameItem(obstacleHitZone);// obstacles hitbox
-      var obstacleImage = draw.bitmap("img/sawblade.png");// obstacle's design
+      var obstacleImage = draw.bitmap(image);// obstacle's design
       obstacleHitZone.addChild(obstacleImage);// tales the picture and adds it as a child to the hit box
-      obstacleImage.x = -25;// offsets the obstacle image horizontally relative to the hit box
-      obstacleImage.y = -25;// offsets the obstacle image vertically relative to the hit box
+      obstacleImage.x = imageOffsetX;// offsets the obstacle image horizontally relative to the hit box
+      obstacleImage.y = imageOffsetY;// offsets the obstacle image vertically relative to the hit box
+      obstacleImage.scaleX = imageSizeX;
+      obstacleImage.scaleY = imageSizeY;
 
-      obstacleHitZone.rotationalVelocity = 10;
+      obstacleHitZone.rotationalVelocity = rotation;
 
     }
     
@@ -57,9 +59,6 @@ var runLevels = function (window) {
       };
     }
 
-    createEnemy(400, groundY - 50);
-    createEnemy(735, groundY - 50);
-    createEnemy(1350, groundY - 50);
 
     function createReward(x, y){
       var reward = game.createGameItem("reward", 25);// creates reward and makes the hit bot 25
@@ -79,10 +78,6 @@ var runLevels = function (window) {
       };
     }
 
-    createReward(900, groundY - 90);
-    createReward(1500, groundY - 90);
-    createReward(1900, groundY - 90);
-
     function createLevelMarker(x, y){
       var levelMarker = game.createGameItem("level", 25);// creates reward and makes the hit bot 25
       var levelImage = draw.rect(50, 50, "yellow");// draws the image and stores the variable
@@ -90,17 +85,16 @@ var runLevels = function (window) {
       levelImage.y = -25;// vertical offset
       levelMarker.addChild(levelImage);// attachs the image to the enmey object
       levelMarker.x = x;// sets the x position
-      LvelMarker.y = y;//sets the y position
-      game.addGameItem(reward);// adds the levelMarker to the game
+      levelMarker.y = y;//sets the y position
+      game.addGameItem(levelMarker);// adds the levelMarker to the game
 
-      reward.velocityX -= 3;// moving the reward
+      levelMarker.velocityX -= 3;// moving the levelMarker
       // handles when halle collides with reward
       levelMarker.onPlayerCollision = function(){
         startLevel();
         levelMarker.fadeOut();// reward fades out
       };
     }
-
 
     function startLevel() {
       // TODO 13 goes below here
@@ -109,8 +103,18 @@ var runLevels = function (window) {
 
       for(var i = 0; i < levelObjects.length; i++){
         var element = levelObjects[i];
+        
         if(element.type === "obstacle"){
-          createObstacle(element.x, element.y, element.damage);
+          createObstacle(element.x, element.y, element.damage, element.rotation, element.image, element.imageOffsetX, element.imageOffsetY, element.imageSizeX, element.imageSizeY);
+        }
+        if(element.type === "enemy"){
+          createEnemy(element.x, element.y);
+        }
+        if(element.type === "reward"){
+          createReward(element.x, element.y);
+        }
+        if(element.type === "levelMarker"){
+          createLevelMarker(element.x, element.y);
         }
 
 
