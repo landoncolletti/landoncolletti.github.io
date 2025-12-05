@@ -5,6 +5,7 @@ var runLevels = function (window) {
   var createjs = window.createjs;
   let currentLevel = 0;
 
+
   window.opspark.runLevelInGame = function (game) {
     // some useful constants
     var groundY = game.groundY;
@@ -37,17 +38,17 @@ var runLevels = function (window) {
     }
     
 
-    function createEnemy(x, y){
-      var enemy = game.createGameItem("enemy", 25);// creates enemy and makes the hit bot 25
+    function createEnemy(x, y, offsetX, offsetY, velocity){
+      var enemy = game.createGameItem("enemy", 25);// creates enemy and makes the hit box 25
       var enemyImage = draw.rect(50, 50, "red");// draws the image and stores the variable
-      enemyImage.x = -25;// horizontal offset
-      enemyImage.y = -25;// vertical offset
+      enemyImage.x = offsetX;// horizontal offset
+      enemyImage.y = offsetY;// vertical offset
       enemy.addChild(enemyImage);// attachs the image to the enmey object
       enemy.x = x;// sets the x position
       enemy.y = y;//sets the y position
       game.addGameItem(enemy);// adds the enemy to the game
 
-      enemy.velocityX -= 3;// moving the enemy
+      enemy.velocityX = velocity;// moving the enemy
       // handles when halle collides with enemy
       enemy.onPlayerCollision = function(){
         game.changeIntegrity(-10);
@@ -108,7 +109,7 @@ var runLevels = function (window) {
           createObstacle(element.x, element.y, element.damage, element.rotation, element.image, element.imageOffsetX, element.imageOffsetY, element.imageSizeX, element.imageSizeY);
         }
         if(element.type === "enemy"){
-          createEnemy(element.x, element.y);
+          createEnemy(element.x, element.y, element.offsetX, element.offsetY, element.velocity);
         }
         if(element.type === "reward"){
           createReward(element.x, element.y);

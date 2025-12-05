@@ -18,7 +18,7 @@ var makeLevelData = function (window) {
           { type: "obstacle", x: 400, y: groundY - 110, damage: 10, rotation: 0, image: "img/spike.png", imageOffsetX: -25, imageOffsetY: -25, imageSizeX: 0.05, imageSizeY: 0.05},
           { type: "obstacle", x: 600, y: groundY - 110, damage: 5, rotation : 0, image: "img/spike.png", imageOffsetX: -25, imageOffsetY: -25, imageSizeX: 0.05, imageSizeY: 0.05},
           { type: "obstacle", x: 1327, y: groundY - 110, damage: 5, rotation: 0, image: "img/spike.png", imageOffsetX: -25, imageOffsetY: -25, imageSizeX: 0.05, imageSizeY: 0.05},
-          { type: "enemy", x: 400, y: groundY - 50},
+          { type: "enemy", x: 400, y: groundY - 50, offsetX: -25, offsetY: -25, velocity: -3},
           { type: "enemy", x: 735, y: groundY - 50},
           { type: "enemy", x: 1350, y: groundY - 50},
           { type: "reward", x: 900, y: groundY - 90},
